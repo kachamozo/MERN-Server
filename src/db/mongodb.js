@@ -5,7 +5,11 @@ mongoose.connection.on('open', () => {
 });
 
 const connectDb = async ({ host, port, dbName }) => {
-	const uri = `mongodb://${host}:${port}/${dbName}`;
+	//DB local
+	// const uri = `mongodb://${host}:${port}/${dbName}`;
+
+	// DB-Nube mongo atlas
+	const uri = process.env.MONGO_URL;
 	await mongoose.connect(uri, {
 		useUnifiedTopology: true,
 		useNewUrlParser: true,
